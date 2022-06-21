@@ -1,0 +1,35 @@
+CREATE TABLE Apex (id INTEGER PRIMARY KEY,
+                    User text,
+                    Kills integer,
+                    Damage integer);
+
+INSERT INTO Apex VALUES ("1", "Joe", "3", "485");
+INSERT INTO Apex VALUES ("2", "Roby", "2", "295");
+INSERT INTO Apex VALUES ("3", "Kaiden", "5", "950");
+
+SELECT * FROM Apex;
+
+UPDATE Apex SET Kills = "6" WHERE id = 1;
+UPDATE Apex SET Damage = "1385" WHERE id = 1;
+UPDATE Apex SET Kills = "4" WHERE id = 2;
+UPDATE Apex SET Damage = "765" WHERE id = 2;
+UPDATE Apex SET Kills = "5" WHERE id =3;
+UPDATE Apex SET Damage = "805" WHERE id = 3;
+
+SELECT * FROM Apex;
+
+ALTER TABLE Apex ADD Kill_Leader TEXT;
+
+SELECT * FROM Apex;
+
+UPDATE Apex SET Kill_Leader = "Kill Leader" WHERE Kills = (SELECT MAX(Kills) FROM Apex);
+
+SELECT * FROM Apex;
+
+UPDATE Apex SET Kill_Leader = " " WHERE Kills < (SELECT MAX(Kills) FROM Apex);
+
+SELECT * FROM Apex;
+
+DELETE FROM Apex WHERE Kill_Leader = " ";
+
+SELECT * FROM Apex;
